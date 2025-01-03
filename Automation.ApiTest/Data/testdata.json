@@ -1,0 +1,6 @@
+{
+    "name": "Alice",
+    "job": "Developer",
+    "getURL": "/api/users?page=",
+    "postURL": "/api/users"
+}
