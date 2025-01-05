@@ -8,14 +8,12 @@ namespace Automation.Core.Helpers
 
         public static T GetJsonValue<T>(string key)
         {
-            //string filePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
             string currentDirectory = Directory.GetCurrentDirectory();
-            string projectDirectory = new DirectoryInfo(Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.FullName;
+            string projectDirectory = new DirectoryInfo(currentDirectory)?.Parent?.Parent?.Parent?.FullName;
             string relativePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
             string filePath = Path.Combine(projectDirectory, relativePath);
-            Console.WriteLine(projectDirectory);
-            string fileContent = File.ReadAllText(filePath);
 
+            string fileContent = File.ReadAllText(filePath);
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, string>>(fileContent);
 
             // Get value by key
