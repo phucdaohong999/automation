@@ -1,13 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel.Design.Serialization;
+using Newtonsoft.Json;
 
 namespace Automation.Core.Helpers
 {
     public class JsonHelper
-	{
+    {
 
         public static T GetJsonValue<T>(string key)
         {
-            string filePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
+            //string filePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string projectDirectory = new DirectoryInfo(Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.FullName;
+            string relativePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
+            string filePath = Path.Combine(projectDirectory, relativePath);
+            Console.WriteLine(projectDirectory);
             string fileContent = File.ReadAllText(filePath);
 
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, string>>(fileContent);
