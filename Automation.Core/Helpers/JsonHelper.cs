@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Automation.Core.Helpers
 {

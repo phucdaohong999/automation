@@ -27,7 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Test\" />
+    <Folder Include="TestAPI\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="testhost.dll.config">

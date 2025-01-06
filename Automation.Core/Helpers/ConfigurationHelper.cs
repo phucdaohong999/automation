@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using Newtonsoft.Json;
 
 namespace Automation.Core.Helpers
 {
