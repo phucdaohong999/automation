@@ -17,7 +17,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.x'  # Adjust for your .NET SDK version
+    version: '6.x'  # Adjust for your .NET SDK version
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
 # Restore dependencies
