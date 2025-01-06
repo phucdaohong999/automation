@@ -7,28 +7,28 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
-
+  name: 'mypool2'  # Use your defined agent pool
+  demands: agent.name -equals desktopAgent2
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'  # Set build configuration
+  solution: 'PhucDH4_MockProject.sln'  # Solution file location
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+# Use the latest .NET SDK
+- task: UseDotNet@2
   inputs:
-    restoreSolution: '$(solution)'
+    packageType: 'sdk'
+    version: '8.x'  # Adjust for your .NET SDK version
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# Restore dependencies
+- script: dotnet restore $(solution)
+  displayName: 'Restore Dependencies'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# Build the solution
+- script: dotnet build $(solution) --configuration $(buildConfiguration) --no-restore
+  displayName: 'Build Solution'
+
+# Run Unit Tests
+- script: dotnet test $(solution) --configuration $(buildConfiguration) --no-build --logger trx
+  displayName: 'Run Unit Tests'
