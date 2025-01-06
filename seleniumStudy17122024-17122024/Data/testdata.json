@@ -1,0 +1,10 @@
+{
+  "employeeNameLabel": "Employee Name",
+  "entitlementLabel": "Entitlement",
+  "invalidErrorMessage": "Invalid",
+  "requiredErrorMessage": "Required",
+  "entitlementErrorMessage": "Should be a number with upto 2 decimal places",
+  "leaveTypeLabel": "Leave Type",
+  "dropdownUSMatternityOption": "US - Matternity",
+  "leavePeriodLabel": "Leave Period"
+}
