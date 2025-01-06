@@ -39,10 +39,12 @@ namespace Automation.ApiTest.TestAPI
             // for new user matches the request data
 
             // Step 1: Prepare the request body with user details.
+            string nameInput = ConfigurationHelper.GetValue<string>("nameInput");
+            string jobInput = ConfigurationHelper.GetValue<string>("jobInput");
             var requestBody = new CreatedUserModel
             {
-                name = "Alice",
-                job = "Developer"
+                name = nameInput,
+                job = jobInput
             };
 
             // Step 2: Create a POST request to the users API with the request body.
