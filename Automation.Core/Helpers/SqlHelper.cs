@@ -18,7 +18,6 @@ namespace Automation.Core.Helpers
         }
         public static void ExecuteMultipleQueries(string connectionStr, params string[] queries)
         {
-            try
             {
                 using (IDbConnection connection = new SqlConnection(connectionStr))
                 {
@@ -27,18 +26,6 @@ namespace Automation.Core.Helpers
                         connection.Execute(query); // Execute the query without fetching results
                     }
                 }
-            }
-            catch (SqlException sqlEx)
-            {
-                // Log SQL-specific exceptions or rethrow
-                Console.WriteLine($"SQL Error: {sqlEx.Message}");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                // Log general exceptions or rethrow
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                throw;
             }
         }
     }
