@@ -41,6 +41,7 @@ namespace PhucDH4_MockProject.Tests.TestPagePracticetestautomationcom
             // Step 6: Verify button Log out is displayed on the new page
             bool isLogoutButtonDisplay = loginSuccessPage.VerifyLogOutButtonExist();
             isLogoutButtonDisplay.ShouldBeTrue();
+            
         }
     }
 }
