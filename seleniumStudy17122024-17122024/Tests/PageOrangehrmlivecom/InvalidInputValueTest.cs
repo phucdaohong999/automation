@@ -79,6 +79,7 @@ namespace PhucDH4_MockProject.Tests.TestPageOrangehrmlivecom
             Assert.AreEqual(leaveTypeError, requiredErrorMessage);
             Assert.AreEqual(leavePeriodError, requiredErrorMessage);
             Assert.AreEqual(entitlementError, entitlementErrorMessage);
+            //do something
         }
     }
 }
