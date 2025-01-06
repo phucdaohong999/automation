@@ -10,11 +10,9 @@ namespace Automation.ApiTest.TestAPI
     [TestClass]
     public class UsersTest : BaseTest
     {
-        [TestMethod]
+        [TestMethod("Test case 1: verify correct page number and data list is not empty")]
         public void Verify_List_Users()
         {
-            // Test case 1: verify correct page number and data list is not empty
-
             // Step 1: Generate a random page number.
             var randomPage = new Random().Next(1, 3);
 
@@ -32,12 +30,9 @@ namespace Automation.ApiTest.TestAPI
             responseData.data.Should().HaveCountGreaterThan(0);
         }
 
-        [TestMethod]
+        [TestMethod("Test case 2: create new user and verify server response for new user matches the request data")]
         public void Verify_Create_User()
         {
-            // Test case 2: create new user and verify server response
-            // for new user matches the request data
-
             // Step 1: Prepare the request body with user details.
             string nameInput = ConfigurationHelper.GetValue<string>("nameInput");
             string jobInput = ConfigurationHelper.GetValue<string>("jobInput");
