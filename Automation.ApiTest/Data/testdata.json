@@ -1,6 +1,6 @@
 {
     "name": "Alice",
     "job": "Developer",
-    "getURL": "/api/users?page=",
-    "postURL": "/api/users"
+    "getPath": "/api/users?page=",
+    "postPath": "/api/users"
 }

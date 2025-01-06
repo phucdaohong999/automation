@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Automation.Core.Helpers
 {
@@ -8,14 +7,16 @@ namespace Automation.Core.Helpers
 
         public static T GetJsonValue<T>(string key)
         {
-            //string filePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
+            // Determine the project directory
             string currentDirectory = Directory.GetCurrentDirectory();
-            string projectDirectory = new DirectoryInfo(Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.FullName;
+            string projectDirectory = new DirectoryInfo(currentDirectory)?.Parent?.Parent?.Parent?.FullName;
+
+            // Construct the full file path
             string relativePath = ConfigurationHelper.GetValue<string>("testdatajsonfilepath");
             string filePath = Path.Combine(projectDirectory, relativePath);
-            Console.WriteLine(projectDirectory);
-            string fileContent = File.ReadAllText(filePath);
 
+            // Read and deserialize the JSON file
+            string fileContent = File.ReadAllText(filePath);
             var jsonData = JsonConvert.DeserializeObject<Dictionary<string, string>>(fileContent);
 
             // Get value by key

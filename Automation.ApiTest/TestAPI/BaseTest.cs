@@ -1,8 +1,7 @@
-﻿using System;
-using Automation.Core.Helpers;
+﻿using Automation.Core.Helpers;
 using RestSharp;
 
-namespace Automation.ApiTest.Test
+namespace Automation.ApiTest.TestAPI
 {
 	[TestClass]
 	public class BaseTest
@@ -11,7 +10,7 @@ namespace Automation.ApiTest.Test
         [TestInitialize]
 		public void SetupRestClient()
 		{
-            client = new RestClient(ConfigurationHelper.GetValue<string>("url"));
+            client = new RestClient(ConfigurationHelper.GetValue<string>("urlforreqresin"));
         }
     }
 }

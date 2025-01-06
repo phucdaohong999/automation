@@ -20,7 +20,7 @@ namespace Automation.Core.Helpers
             test = extent.CreateTest(testCaseTitle, testCaseDescription);
         }
 
-        public void LogMessage(string status, string detail, string imgBase64 = null)
+        public void LogMessageAndTakeScreenshot(string status, string detail, string imgBase64 = null)
         {
             switch (status)
             {

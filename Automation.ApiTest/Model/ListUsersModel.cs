@@ -1,5 +1,4 @@
-﻿using System;
-namespace Automation.ApiTest.Model
+﻿namespace Automation.ApiTest.Model
 {
     public class ListUsersModel
     {

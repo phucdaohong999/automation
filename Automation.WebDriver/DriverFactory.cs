@@ -1,10 +1,7 @@
-﻿using System;
-using OpenQA.Selenium;
-using Automation.WebDriver;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
-using Automation.Core.Helpers;
 
 namespace Automation.WebDriver
 {

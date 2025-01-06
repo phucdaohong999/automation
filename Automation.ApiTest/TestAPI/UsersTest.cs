@@ -5,21 +5,20 @@ using FluentAssertions;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace Automation.ApiTest.Test
+namespace Automation.ApiTest.TestAPI
 {
     [TestClass]
     public class UsersTest : BaseTest
     {
-        [TestMethod]
+        [TestMethod("Test case 1: verify correct page number and data list is not empty")]
         public void Verify_List_Users()
         {
-        // Test case 1: verify correct page number and data list is not empty
-
             // Step 1: Generate a random page number.
             var randomPage = new Random().Next(1, 3);
 
             // Step 2: Send a GET request to the users API for the random page.
-            var request = ApiHelper.GetUsers(randomPage);
+            string getPath = JsonHelper.GetJsonValue<string>("getPath");
+            var request = ApiHelper.GetUsers(getPath, randomPage);
             RestResponse response = client.Execute(request);
 
             // Step 3: Validate the response status and content.
@@ -31,21 +30,21 @@ namespace Automation.ApiTest.Test
             responseData.data.Should().HaveCountGreaterThan(0);
         }
 
-        [TestMethod]
+        [TestMethod("Test case 2: create new user and verify server response for new user matches the request data")]
         public void Verify_Create_User()
         {
-            // Test case 2: create new user and verify server response
-            // for new user matches the request data
-
             // Step 1: Prepare the request body with user details.
+            string nameInput = ConfigurationHelper.GetValue<string>("nameInput");
+            string jobInput = ConfigurationHelper.GetValue<string>("jobInput");
             var requestBody = new CreatedUserModel
             {
-                name = "Alice",
-                job = "Developer"
+                name = nameInput,
+                job = jobInput
             };
 
             // Step 2: Create a POST request to the users API with the request body.
-            var request = ApiHelper.CreateUser(requestBody);
+            string postPath = JsonHelper.GetJsonValue<string>("postPath");
+            var request = ApiHelper.CreateUser(postPath, requestBody);
 
             // Step 3: Execute the request and capture the response.
             RestResponse response = client.Execute(request);
